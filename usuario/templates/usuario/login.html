@@ -1,0 +1,39 @@
+{% extends 'template.html'%}
+{%load static%}
+{% block 'titulo'%}Login{% endblock %}
+{%block 'content'%}
+<div class="text-center">
+    <img src="{%static 'images\logo.jpeg'%}" width="500px" height="auto" alt="...">
+</div>
+<form class="d-grid gap-2 mt-2 mx-auto container" method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="mb-3 row input-group input-group-lg">
+        <input type="email" class="form-control" id="exampleInputEmail1"
+               aria-describedby="emailHelp" placeholder="Email" name="email" style="font-size: 35px;">
+    </div>
+    <div class="mb-3 row input-group input-group-lg">
+        <input type="password" class="form-control" id="exampleInputPassword1"
+               placeholder="Senha" name="senha" style="font-size: 35px;">
+    </div>
+    <div class=" form-check row">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1" style="font-size: 35px;">Eu não sou um robô</label>
+    </div>
+    <div class="row">
+        <div class="d-grid gap-2 mx-auto mt-2">
+            <button type="submit" class="btn btn-primary btn-lg fw-bold" style="padding:40px;font-size: 35px"
+                    role="button">
+                Entrar
+            </button>
+        </div>
+    </div>
+</form>
+<div class="container">
+    <div class="d-grid gap-2 mx-auto mt-2">
+        <a type="button" class="btn btn-outline-primary btn-lg fw-bold" style="padding:40px;font-size: 35px"
+           href="{% url 'cadastro' %}">
+            Cadastrar-se
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'template.html'%}
+{%load static%}
+{% block 'titulo'%}Login{% endblock %}
+
+{%block 'content'%}
+<div class="text-center" style="margin-top:100px">
+    <img src="{%static 'images\logo.jpeg'%}" width="500px" height="auto" alt="...">
+</div>
+<div class="text-center">
+    <p>Livros e inspirações<br>na palma da sua mão</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="d-grid gap-2 mt-2 mx-auto">
+            <a type="button" class="btn btn-primary btn-lg fw-bold" style="padding:40px;font-size:35px;"
+               href="{% url 'login' %}">Acessar meus livros</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-grid gap-2 mt-2 mx-auto">
+            <a type="button" class="btn btn-outline-primary btn-lg fw-bold" style="padding:40px;font-size:35px;"
+               href="{% url 'cadastro' %}">
+                Primeira vez por aqui?
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
