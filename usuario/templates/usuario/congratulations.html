@@ -2,14 +2,14 @@
 {%load static%}
 {% block 'titulo'%}Login{% endblock %}
 {%block 'content'%}
-<div class="fw-bolder mt-5">
-    <p style="font-size:40px;">Parabéns {% if user.is_authenticated %}{{user.first_name}}{% else %}{{nome}} {% endif %} !</p>
+<div class="fw-bolder mt-3">
+    <p style="font-size:25px;">Parabéns {% if user.is_authenticated %}{{user.first_name}}{% else %}{{nome}} {% endif %} !</p>
     <p>Agora você pode ler o primeiro capítulo do seu livro gratuitamente! :)</p>
 </div>
-<div class="mt-5">
+<div class="mt-3">
     <p>Nos fale sobre seus assuntos favoritos: </p>
 </div>
-<form class="d-grid gap-2 mt-2 mx-auto container" method="GET" action="#">
+<form method="GET" action="#">
     {% csrf_token %}
     <div class="form-check row">
         <input class="form-check-input" type="checkbox" value="0" id="fil_socratica">
@@ -41,20 +41,17 @@
             Auto ajuda
         </label>
     </div>
-    <div class="row">
-        <div class="d-grid gap-2 mt-2 mx-auto">
-            <button type="submit" role="button" class="btn btn-primary btn-lg fw-bold" style="padding:40px;font-size: 35px">
+    <div class="row text-center">
+        <div class="col-6">
+            <button type="submit" role="button" class="btn btn-primary btn-lg fw-bold">
                 Enviar
             </button>
         </div>
+        <div class="col-6">
+            <a type="button" class="btn btn-outline-primary fw-bold btn-lg" role="button" href="{% url 'sair' %}">
+            Sair
+            </a>
+        </div>
     </div>
 </form>
-<div class="container">
-    <div class="d-grid gap-2 mt-2 mx-auto">
-        <a type="button" class="btn btn-outline-primary btn-lg fw-bold" style="padding:40px;font-size: 35px"
-           href="{% url 'sair' %}">
-            Sair
-        </a>
-    </div>
-</div>
 {% endblock %}

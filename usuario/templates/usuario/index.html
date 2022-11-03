@@ -3,26 +3,25 @@
 {% block 'titulo'%}Login{% endblock %}
 
 {%block 'content'%}
-<div class="text-center" style="margin-top:100px">
-    <img src="{%static 'images\logo.jpeg'%}" width="500px" height="auto" alt="...">
-</div>
-<div class="text-center">
-    <p>Livros e inspirações<br>na palma da sua mão</p>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="d-grid gap-2 mt-2 mx-auto">
-            <a type="button" class="btn btn-primary btn-lg fw-bold" style="padding:40px;font-size:35px;"
-               href="{% url 'login' %}">Acessar meus livros</a>
-        </div>
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <img src="{%static 'images\logo.jpeg'%}" width="200px" height="auto" alt="...">
     </div>
-    <div class="row">
-        <div class="d-grid gap-2 mt-2 mx-auto">
-            <a type="button" class="btn btn-outline-primary btn-lg fw-bold" style="padding:40px;font-size:35px;"
-               href="{% url 'cadastro' %}">
-                Primeira vez por aqui?
-            </a>
-        </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Livros e inspirações<br>na palma da sua mão</p>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-6">
+        <a role="button" class="btn btn-primary fw-bold btn-lg" href="{% url 'login' %}" type="button">Acessar meus livros</a>
+    </div>
+    <div class="col-6">
+        <a role="button" class="btn btn-outline-primary fw-bold btn-lg" href="{% url 'cadastro' %}" type="button">
+            Primeira vez aqui?
+        </a>
     </div>
 </div>
 {% endblock %}

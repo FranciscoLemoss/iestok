@@ -2,47 +2,44 @@
 {%load static%}
 {% block 'titulo'%}Login{% endblock %}
 {%block 'content'%}
+
 <div class="text-center">
-    <img src="{%static 'images\logo.jpeg'%}" width="300px" height="auto" alt="...">
+    <img src="{%static 'images\logo.jpeg'%}" width="150px" height="auto" alt="...">
 </div>
-<form class="d-grid gap-2 mx-auto container" method="POST" action="{% url 'cadastro' %}">
+<form method="POST" action="{% url 'cadastro' %}">
     {% csrf_token %}
     <div class="mb-3 row input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Primeiro nome" name="nome" style="font-size: 35px;">
+        <input type="text" class="form-control" placeholder="Primeiro nome" name="nome">
     </div>
     <div class="mb-3 row input-group input-group-lg">
         <input type="email" class="form-control" aria-describedby="emailHelp"
-               placeholder="Email" name="email" style="font-size: 35px;">
-    </div>
-     <div class="mb-3 row input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Nome de usuário" name="username" style="font-size: 35px;">
+               placeholder="Email" name="email">
     </div>
     <div class="mb-3 row input-group input-group-lg">
-        <input type="password" class="form-control" placeholder="Sua senha" name="senha" style="font-size: 35px;">
+        <input type="text" class="form-control" placeholder="Nome de usuário" name="username">
+    </div>
+    <div class="mb-3 row input-group input-group-lg">
+        <input type="password" class="form-control" placeholder="Sua senha" name="senha">
     </div>
     <div class="mb-3 row input-group input-group-lg">
         <input type="password" class="form-control" placeholder="Repita a Senha"
-               name="senha_repetida" style="font-size: 35px;">
+               name="senha_repetida">
     </div>
     <div class="form-check row">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1" style="font-size: 35px;">Eu não sou um robô</label>
+        <label class="form-check-label" for="exampleCheck1">Eu não sou um robô</label>
     </div>
-    <div class="row">
-        <div class="d-grid gap-2 mx-auto mt-2">
-            <button type="submit" role="button" class="btn btn-primary fw-bold"
-                    style="padding:40px; font-size: 35px;">
+    <div class="row text-center">
+        <div class="col-6">
+            <button type="submit" role="button" class="btn btn-primary fw-bold btn-lg" role="button">
                 Cadastrar
             </button>
         </div>
+        <div class="col-6">
+            <a type="button" class="btn btn-outline-primary fw-bold btn-lg" href="{% url 'index' %}" role="button">
+                Voltar
+            </a>
+        </div>
     </div>
 </form>
-<div class="container">
-    <div class="d-grid gap-2 mx-auto mt-2">
-        <a type="button" class="btn btn-outline-primary fw-bold" style="padding:40px; font-size: 35px;"
-           href="{% url 'index' %}">
-            Voltar
-        </a>
-    </div>
-</div>
 {% endblock %}
