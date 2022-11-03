@@ -4,6 +4,7 @@ from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user, logout
+from livro.models import Escola
 # Create your views here.
 
 def index(request):
@@ -111,7 +112,8 @@ def login(request):
 
 @login_required(redirect_field_name='login')
 def congratulations(request):
-    return render(request, 'usuario/congratulations.html')
+    escolas = Escola.objects.order_by('id')
+    return render(request, 'usuario/congratulations.html', {'escolas':escolas})
 
 def sair(request):
 

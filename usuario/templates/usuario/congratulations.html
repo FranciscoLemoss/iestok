@@ -1,9 +1,10 @@
 {% extends 'template.html'%}
 {%load static%}
-{% block 'titulo'%}Login{% endblock %}
+{% block 'titulo'%}Iestok|congratulations{% endblock %}
 {%block 'content'%}
 <div class="fw-bolder mt-3">
-    <p style="font-size:25px;">Parabéns {% if user.is_authenticated %}{{user.first_name}}{% else %}{{nome}} {% endif %} !</p>
+    <p style="font-size:25px;">Parabéns {% if user.is_authenticated %}{{user.first_name}}{% else %}{{nome}} {% endif %}
+        !</p>
     <p>Agora você pode ler o primeiro capítulo do seu livro gratuitamente! :)</p>
 </div>
 <div class="mt-3">
@@ -11,36 +12,14 @@
 </div>
 <form method="GET" action="#">
     {% csrf_token %}
+    {% for escola in escolas %}
     <div class="form-check row">
-        <input class="form-check-input" type="checkbox" value="0" id="fil_socratica">
-        <label class="form-check-label" for="fil_socratica">
-            Filosofia socrática
+        <input class="form-check-input" type="checkbox" value="{{escola.descricao}}" id="{{escola.descricao}}">
+        <label class="form-check-label" for="{{escola.descricao}}">
+            {{escola.descricao}}
         </label>
     </div>
-    <div class="form-check row">
-        <input class="form-check-input" type="checkbox" value="1" id="fil_aristotelica">
-        <label class="form-check-label" for="fil_aristotelica">
-            Filosofia Aristotélica
-        </label>
-    </div>
-    <div class="form-check row">
-        <input class="form-check-input" type="checkbox" value="2" id="fil_contemporanea">
-        <label class="form-check-label" for="fil_contemporanea">
-            Filosofia contemporânea
-        </label>
-    </div>
-    <div class="form-check row">
-        <input class="form-check-input" type="checkbox" value="3" id="fil_trevas">
-        <label class="form-check-label" for="fil_trevas">
-            Filosofia das trevas
-        </label>
-    </div>
-    <div class="form-check row">
-        <input class="form-check-input" type="checkbox" value="3" id="auto_ajuda">
-        <label class="form-check-label" for="auto_ajuda">
-            Auto ajuda
-        </label>
-    </div>
+    {% endfor %}
     <div class="row text-center">
         <div class="col-6">
             <button type="submit" role="button" class="btn btn-primary btn-lg fw-bold">
@@ -49,7 +28,7 @@
         </div>
         <div class="col-6">
             <a type="button" class="btn btn-outline-primary fw-bold btn-lg" role="button" href="{% url 'sair' %}">
-            Sair
+                Sair
             </a>
         </div>
     </div>
