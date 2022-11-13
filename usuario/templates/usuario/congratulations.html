@@ -2,7 +2,7 @@
 {%load static%}
 {% block 'titulo'%}Iestok|congratulations{% endblock %}
 {%block 'content'%}
-<div class="fw-bolder mt-3">
+<div class="fw-bolder mt-3 mr-3">
     <p style="font-size:25px;">Parabéns {% if user.is_authenticated %}{{user.first_name}}{% else %}{{nome}} {% endif %}
         !</p>
     <p>Agora você pode ler o primeiro capítulo do seu livro gratuitamente! :)</p>
