@@ -15,6 +15,7 @@ class Livro(models.Model):
     autor = models.CharField(verbose_name='autor', null=False, max_length=30)
     sinopse = models.TextField(verbose_name='sinópse', null=False)
     data_publicacao = models.DateField(verbose_name='Data de publicação', null=False)
+    preco = models.FloatField(verbose_name='Preço', null=False)
     #imagem = models.
 
 

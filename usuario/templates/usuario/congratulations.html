@@ -2,35 +2,40 @@
 {%load static%}
 {% block 'titulo'%}Iestok|congratulations{% endblock %}
 {%block 'content'%}
-<div class="fw-bolder mt-3 mr-3">
-    <p style="font-size:25px;">Parabéns {% if user.is_authenticated %}{{user.first_name}}{% else %}{{nome}} {% endif %}
-        !</p>
-    <p>Agora você pode ler o primeiro capítulo do seu livro gratuitamente! :)</p>
-</div>
-<div class="mt-3">
-    <p>Nos fale sobre seus assuntos favoritos: </p>
-</div>
-<form method="GET" action="#">
-    {% csrf_token %}
-    {% for escola in escolas %}
-    <div class="form-check row">
-        <input class="form-check-input" type="checkbox" value="{{escola.descricao}}" id="{{escola.descricao}}">
-        <label class="form-check-label" for="{{escola.descricao}}">
-            {{escola.descricao}}
-        </label>
-    </div>
-    {% endfor %}
-    <div class="row text-center">
-        <div class="col-6">
-            <button type="submit" role="button" class="btn btn-primary btn-lg fw-bold">
-                Enviar
-            </button>
+{% csrf_token %}
+
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center orange-text black-text">Parabéns {% if user.is_authenticated %}{{user.first_name}}{% else %}{{nome}}{% endif %}!</h1>
+        <div class="row center">
+            <h5 class="header col s12 black-text">Agora você pode ler o primeiro capítulo do seu livro gratuitamente! :)
+            </h5>
         </div>
-        <div class="col-6">
-            <a type="button" class="btn btn-outline-primary fw-bold btn-lg" role="button" href="{% url 'sair' %}">
-                Sair
-            </a>
+        <div class="row center">
+            <h5 class="header col s12 black-text">Nos fale sobre seus assuntos favoritos:</h5>
         </div>
+        <form method="GET" action="#">
+            {% csrf_token %}
+            {% for escola in escolas %}
+            <div class="row">
+                <div class="col s12 m-6 push-m4">
+                    <label>
+                        <input type="checkbox" />
+                        <span class="black-text" style="font-size:large;">{{escola.descricao}}</span>
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="row center">
+                <button class="btn-large waves-effect waves-light purple" type="submit" name="action"
+                    role="button">ENVIAR
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+        <br><br>
     </div>
-</form>
+</div>
+
 {% endblock %}

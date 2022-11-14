@@ -2,43 +2,50 @@
 {%load static%}
 {% block 'titulo'%}Iestok|cadastro{% endblock %}
 {%block 'content'%}
-
-<div class="text-center">
-    <img src="{%static 'images\logo.jpeg'%}" width="150px" height="auto" alt="...">
-</div>
-<form method="POST" action="{% url 'cadastro' %}">
+<form method="POST" action="{% url 'cadastro' %}" class="row" class="container">
     {% csrf_token %}
-    <div class="mb-3 row input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Primeiro nome" name="nome">
-    </div>
-    <div class="mb-3 row input-group input-group-lg">
-        <input type="email" class="form-control" aria-describedby="emailHelp"
-               placeholder="Email" name="email">
-    </div>
-    <div class="mb-3 row input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Nome de usuário" name="username">
-    </div>
-    <div class="mb-3 row input-group input-group-lg">
-        <input type="password" class="form-control" placeholder="Sua senha" name="senha">
-    </div>
-    <div class="mb-3 row input-group input-group-lg">
-        <input type="password" class="form-control" placeholder="Repita a Senha"
-               name="senha_repetida">
-    </div>
-    <div class="form-check row">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Eu não sou um robô</label>
-    </div>
-    <div class="row text-center">
-        <div class="col-6">
-            <button type="submit" role="button" class="btn btn-primary fw-bold btn-lg" role="button">
-                Cadastrar
-            </button>
-        </div>
-        <div class="col-6">
-            <a type="button" class="btn btn-outline-primary fw-bold btn-lg" href="{% url 'index' %}" role="button">
-                Voltar
-            </a>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+            <h2 class="header center orange-text black-text">Bem vindo ao iEstok!</h2>
+            <div class="row center">
+                <div class="row">
+                    <div class="input-field col s12 m6 push-m3">
+                        <input id="primeiro_nome" type="text" class="validate" name="nome">
+                        <label for="primeiro_nome">Primeiro nome</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Insira o seu nome</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m6 push-m3">
+                        <input id="email" type="email" class="validate" name="email">
+                        <label for="email">Email</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Insira o seu email</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m6 push-m3">
+                        <input type="password" id="senha" class="validate" name="senha">
+                        <label for="senha">Senha</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Digite a sua senha</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m6 push-m3">
+                        <input type="password" id="senha_repetida" class="validate" name="senha_repetida">
+                        <label for="senha_repetida">Repita a senha</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Digite o mesmo valor do campo
+                            acima</span>
+                    </div>
+                </div>
+                <div class="row center">
+                    <button class="btn-large waves-effect waves-light purple" type="submit" name="action"
+                        role="button">CADASTRAR
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <br><br>
+            </div>
         </div>
     </div>
 </form>

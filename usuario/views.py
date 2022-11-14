@@ -26,12 +26,16 @@ def cadastro(request):
     if request.method != 'POST':
         return render(request, 'usuario/cadastro.html')
 
-    username = request.POST.get('username')
     nome = request.POST.get('nome')
     email = request.POST.get('email')
     senha = request.POST.get('senha')
     senha_repetida = request.POST.get('senha_repetida')
-    print(nome)
+    
+    if nome:
+        username = nome.lower()
+    else:
+        messages.add_message(request, messages.ERROR, 'Todos os campos devem ser preenchidos!')
+        return render(request, 'usuario/cadastro.html')
 
     if not username or not nome or not email or not senha or not senha_repetida:
         messages.add_message(request, messages.ERROR, 'Todos os campos devem ser preenchidos!')
@@ -63,10 +67,17 @@ def cadastro(request):
         messages.add_message(request, messages.ERROR, 'Email já está cadastrado!')
         return render(request, 'usuario/cadastro.html')
 
-    User.objects.create_user(username=username,
+    print('se fuder')
+
+    try:
+        User.objects.create_user(username=username,
                                     email=email,
                                     first_name=nome,
                                     password=senha)
+    except:
+        messages.add_message(request, messages.ERROR, 'Tente outro nome de usuário!')
+        return render(request, 'usuario/cadastro.html')
+
 
     messages.add_message(request, messages.SUCCESS, 'Cadastro efetivado com sucesso!')
 
@@ -74,6 +85,7 @@ def cadastro(request):
 
 def login(request):
 
+    print('Fudeuuuuuuu')
     user = get_user(request)
 
 
@@ -101,6 +113,8 @@ def login(request):
 
     user = auth.authenticate(request, username=user.username, password=senha)
 
+
+
     if not user:
         messages.add_message(request, messages.ERROR, 'Usuário ou senha inválidos!')
         return render(request, 'usuario/login.html')
@@ -113,6 +127,7 @@ def login(request):
 @login_required(redirect_field_name='login')
 def congratulations(request):
     escolas = Escola.objects.order_by('id')
+    print(escolas)
     return render(request, 'usuario/congratulations.html', {'escolas':escolas})
 
 def sair(request):

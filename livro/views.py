@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def livros(request):
-    pass
+def catalogo(request):
+    return render(request, 'livro/catalogo.html')

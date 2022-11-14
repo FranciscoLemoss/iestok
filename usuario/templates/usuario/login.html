@@ -3,7 +3,7 @@
 {% block 'titulo'%}Iestok|Login{% endblock %}
 {%block 'content'%}
 
-<form method="POST" action="{% url 'login' %}" class="row" class="container">
+<form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
@@ -12,29 +12,24 @@
             <div class="row center">
                 <div class="row">
                     <div class="input-field col s12 m8 push-m2">
-                        <input id="email" type="email" class="validate">
+                        <input id="email" type="email" class="validate" name="email">
                         <label for="email">Email</label>
                         <span class="helper-text" data-error="wrong" data-success="right">Insira o seu email</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m8 push-m2">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha"
-                            name="senha">
-                        <label for="password">Password</label>
-                        <span class="helper-text" data-error="wrong" data-success="right">Insira a sua</span>
+                        <input type="password" class="form-control" id="senha" name="senha">
+                        <label for="senha">Password</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Insira a sua senha</span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="row center">
-                        <a href="{% url 'login' %}" href="{% url 'login' %}" id="download-button"
-                            class="btn-large waves-effect waves-light purple">Entrar</a>
-                    </div>
+                <div class="row center">
+                    <button role="button" type="submit" class="btn-large waves-effect waves-light purple">Entrar</button>
                 </div>
             </div>
             <br><br>
         </div>
     </div>
-
 </form>
 {% endblock %}
