@@ -11,44 +11,8 @@
     {%include 'partials/_nav.html'%}
 
     {%block 'content'%} {% endblock %}
-  <footer class="page-footer purple">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">iEstok Company</h5>
-          <p class="grey-text text-lighten-4">Nós somos uma plataforma de livre pensamento.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Cadastro</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Suporte</a></li>
-            <li><a class="white-text" href="#!">Alterar dados de contato</a></li>
-            <li><a class="white-text" href="#!">Alterar dados pessoais</a></li>
-            <li><a class="white-text" href="#!">Alterar dados de pagamento</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Parceiros</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
-
-
-<script src="{% static 'js/materialize.js' %}"></script>
+    {%include 'partials/_footer.html'%}
+    <script src="{% static 'js/materialize.js' %}"></script>
 </body>
 
 </html>
