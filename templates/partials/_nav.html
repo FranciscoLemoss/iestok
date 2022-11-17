@@ -1,27 +1,27 @@
 {%load static%}
 
 <nav class="black" role="navigation">
-   
-    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'login' %}" class="brand-logo"  class="white">
-        <img src="{%static 'images\icon.png'%}" width="50px" height="auto" alt="...">iEstok
+
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="{% url 'login' %}" class="brand-logo" class="white">
+            <img src="{%static 'images\icon.png'%}" width="50px" height="auto" alt="...">iEstok
         </a>
         {% if user.is_authenticated %}
-        <ul class="right hide-on-med-and-down" >
+        <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'sair' %}" class="white-text">Sair</a></li>
         </ul>
         {% else %}
         <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'cadastro' %}" class="white-text">Cadastrar-se</a></li>
         </ul>
-        <ul class="right hide-on-med-and-down" >
+        <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'login' %}" class="white-text">Entrar</a></li>
         </ul>
         {% endif %}
-        
+
         <ul id="nav-mobile" class="sidenav">
             <li><a href="{% url 'login' %}" class="white-text">Entrar</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-
