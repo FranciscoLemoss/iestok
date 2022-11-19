@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user, logout
 from livro.models import Escola
-from .models import Preferencias
+from .models import Preferencia
 # Create your views here.
 
 def index(request):
@@ -13,7 +13,7 @@ def index(request):
     user = get_user(request)
 
     if user.is_authenticated:
-        preferencias = Preferencias.objects.filter(usuario=user)
+        preferencias = Preferencia.objects.filter(usuario=user)
         if preferencias:
             return redirect('catalogo')
         else:
@@ -92,7 +92,7 @@ def login(request):
     user = get_user(request)
 
     if user.is_authenticated:
-        preferencias = Preferencias.objects.filter(usuario=user)
+        preferencias = Preferencia.objects.filter(usuario=user)
         if preferencias:
             return redirect('catalogo')
         else:
@@ -124,7 +124,7 @@ def login(request):
         return render(request, 'usuario/login.html')
     else:
         auth.login(request, user)
-        preferencias = Preferencias.objects.filter(usuario=user)
+        preferencias = Preferencia.objects.filter(usuario=user)
         if preferencias:
             return redirect('catalogo')
         else:
@@ -139,7 +139,7 @@ def congratulations(request):
     user = get_user(request)
 
     if user.is_authenticated:
-        preferencias = Preferencias.objects.filter(usuario=user)
+        preferencias = Preferencia.objects.filter(usuario=user)
         if len(preferencias) > 0:
             return redirect('catalogo')
 
@@ -150,9 +150,9 @@ def congratulations(request):
     for escola in escolas:
         checkbox = request.POST.get(escola.descricao)
         if checkbox:
-            preferencia = Preferencias()
+            preferencia = Preferencia()
             preferencia.usuario = user
-            preferencia.preferencia = escola
+            preferencia.escola = escola
             preferencia.save()
 
     return redirect('catalogo')
