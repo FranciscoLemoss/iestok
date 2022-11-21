@@ -22,14 +22,14 @@
                 <div class="col s12 m-6 push-m4">
                     <label>
                         <input type="checkbox"  name="{{escola.descricao}}" />
-                        <span class="black-text" style="font-size:large;">{{escola.descricao}}</span>
+                        <span class="black-text" style="font-size:large;" id="{{escola.descricao}}">{{escola.descricao}}</span>
                     </label>
                 </div>
             </div>
             {% endfor %}
             <div class="row center">
                 <button class="btn-large waves-effect waves-light purple" type="submit" name="action"
-                    role="button">ENVIAR
+                    role="button" id="enviar_preferencias">ENVIAR
                     <i class="material-icons right">send</i>
                 </button>
             </div>

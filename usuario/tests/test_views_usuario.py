@@ -30,7 +30,7 @@ class PreferenciasViewTest(TestCase):
         response = self.client.get('/catalogo')
         self.assertEqual(response.status_code, 302, 'Endereço /catalogo não redireciona quando sem login')
 
-    def test_view_acessibilidade_url_nome(self):
+    def test_view_url_existe_e_responde_atributo_name(self):
         response = self.client.get(reverse('cadastro'))
         self.assertEqual(response.status_code, 200)
         response = self.client.get(reverse('congratulations'))

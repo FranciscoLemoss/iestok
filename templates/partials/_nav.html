@@ -8,14 +8,14 @@
         </a>
         {% if user.is_authenticated %}
         <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'sair' %}" class="white-text">Sair</a></li>
+            <li><a href="{% url 'sair' %}" class="white-text" id="botao_sair" >Sair</a></li>
         </ul>
         {% else %}
         <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'cadastro' %}" class="white-text">Cadastrar-se</a></li>
+            <li><a href="{% url 'cadastro' %}" class="white-text" id="botao_cadastrar">Cadastrar-se</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'login' %}" class="white-text">Entrar</a></li>
+            <li><a href="{% url 'login' %}" class="white-text" id="botao_entrar_2" >Entrar</a></li>
         </ul>
         {% endif %}
 

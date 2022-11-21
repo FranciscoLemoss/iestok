@@ -2,6 +2,8 @@ from django.test import TestCase
 from usuario.models import Preferencia
 from django.contrib.auth.models import User
 from livro.models import Escola
+from django.db import models
+
 
 """class Preferencias(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -24,20 +26,16 @@ class PreferenciaModelTest(TestCase):
         self.assertEquals(usuario.first_name, 'Francisco', 'A preferência não está sendo associada ao usuário')
         self.assertEquals(escola.descricao, 'Escola sacro-romana', 'A preferência não está sendo associada ao usuário')
 
-
-class UserModelTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        User.objects.create_user(username='fr.lemos@yahoo.com.br',
-                                    email='fr.lemos@yahoo.com.br',
-                                    first_name='Francisco',
-                                    password='francisco123')
-    def test_email_label(self):
+    def test_on_delete_cascade(self):
         usuario = User.objects.get(id=1)
-        email = usuario.email
-        self.assertEquals(email, 'fr.lemos@yahoo.com.br', 'O campo email não está sendo associado ao usuário correspondente')
+        usuario.delete()
+        preferencias = Preferencia.objects.all()
+        self.assertTrue(len(preferencias) == 0, 'O atributo ondelete do campo usuário no model Preferencias não foi devidamente configurado')
 
-    def test_first_name_label(self):
-        usuario = User.objects.get(id=1)
-        first_name = usuario.first_name
-        self.assertEquals(first_name, 'Francisco', 'O campo nome não está sendo vinculado ao usuário correspondente ')
+
+    def test_escola_delete_cascade(self):
+        escola = Escola.objects.get(id=1)
+        escola.delete()
+        preferencias = Preferencia.objects.all()
+        self.assertTrue(len(preferencias) == 0,
+                        'O atributo ondelete do campo escola no model Preferencias não foi devidamente configurado')
