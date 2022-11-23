@@ -1,6 +1,5 @@
 from django.test import TestCase
 from livro.models import Escola, Livro
-from datetime import date
 from django.utils import timezone
 
 

@@ -2,12 +2,7 @@ from django.test import TestCase
 from usuario.models import Preferencia
 from django.contrib.auth.models import User
 from livro.models import Escola
-from django.db import models
 
-
-"""class Preferencias(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    preferencia = models.ForeignKey(Escola, on_delete=models.CASCADE)"""
 
 class PreferenciaModelTest(TestCase):
     @classmethod

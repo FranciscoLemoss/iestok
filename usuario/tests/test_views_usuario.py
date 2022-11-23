@@ -1,10 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import User
 from usuario.models import Preferencia
 from livro.models import Escola
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import get_user
+
 
 class PreferenciasViewTest(TestCase):
     @classmethod
@@ -42,15 +41,15 @@ class PreferenciasViewTest(TestCase):
 
     def test_view_usa_template_correto(self):
         response = self.client.get(reverse('cadastro'))
-        self.assertTemplateUsed(response, 'usuario/cadastro.html')
+        self.assertTemplateUsed(response, 'usuario/cadastro.html', 'A url cadastro não está renderizando a página cadastro.html')
         response = self.client.get(reverse('login'))
-        self.assertTemplateUsed(response, 'usuario/login.html')
+        self.assertTemplateUsed(response, 'usuario/login.html', 'A url login não está renderizando a página login.html')
 
     def test_view_redireciona_correto(self):
         self.client.login(username='Francisco', password='francisco123')
         response = self.client.get(reverse('cadastro'))
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/congratulations/')
+        self.assertEqual(response.status_code, 302, 'A url cadastro não está respondendo com redirecionamento quando o usuário está logado')
+        self.assertRedirects(response, '/congratulations/', 'A url cadastro não está redicionando para a página congratularions quando o usuário está logado')
 
         response = self.client.get(reverse('sair'))
         self.assertRedirects(response, '/')

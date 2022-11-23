@@ -37,6 +37,9 @@ class ChromeAuto:
             btn_efetivar_login = self.chrome.find_element(By.ID, 'efetivar_login')
             btn_efetivar_login.click()
             sleep(1)
+            if 'catalogo' not in self.chrome.current_url:
+                print(f'Erro: Página de catálogo não acessada pelo usuário de email {email}! Verificar se de fato foi atribuída'
+                      f' preferência ao usuário.')
             btn_sair = self.chrome.find_element(By.ID, 'botao_sair')
             btn_sair.click()
         except Exception as e:
