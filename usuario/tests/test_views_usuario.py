@@ -49,7 +49,7 @@ class PreferenciasViewTest(TestCase):
         self.client.login(username='Francisco', password='francisco123')
         response = self.client.get(reverse('cadastro'))
         self.assertEqual(response.status_code, 302, 'A url cadastro não está respondendo com redirecionamento quando o usuário está logado')
-        self.assertRedirects(response, '/congratulations/', 'A url cadastro não está redicionando para a página congratularions quando o usuário está logado')
+        self.assertRedirects(response, '/congratulations/')
 
         response = self.client.get(reverse('sair'))
         self.assertRedirects(response, '/')
